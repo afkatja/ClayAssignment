@@ -1,0 +1,10 @@
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Authorization";
+}
+
+<h2>@ViewData["Title"]: add account</h2>
+
+<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+
+</form>
