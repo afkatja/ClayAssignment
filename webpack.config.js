@@ -11,7 +11,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015', 'react-hmre'],
+          presets: ['react', 'es2015'],
           plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
         }
       },
@@ -22,6 +22,10 @@ module.exports = {
       {
         test: /\.css$/i,
         loader: "style!css"
+      },
+      {
+        test: /\.svg$/,
+        loader: 'babel!svg-react'
       }
     ]
   },

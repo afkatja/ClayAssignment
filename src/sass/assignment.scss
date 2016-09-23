@@ -1,16 +1,57 @@
-html, body {
+html, body, #app {
   height: 100%;
 }
 body {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+.container {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  .body-content {
+    flex: 1 0 auto;
+    width: 80%;
+    margin: 0 auto;
+  }
 }
-main.container {
-  flex: 1 0 auto;
+.navbar-header {
+  position: relative;
+  display: flex;
+  background-color: #b2ebf2;
+  border-bottom: 1px solid #4dd0e1;
+  padding: 0 24px;
+  text-shadow: 0 1px 0 rgba(0,0,0, .2);
+  .mainnav {
+    box-sizing: border-box;
+  }
+  .navbar {
+    margin-left: auto;
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      li {
+        margin-right: 10px;
+        line-height: 60px;
+        &:last-child {
+          margin-right: 0;
+        }
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }
 footer {
   margin: 0 auto;
-  width: 970px;
-  padding: 15px;
+  width: 80%;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  a {
+    margin-left: 10px;
+  }
 }
