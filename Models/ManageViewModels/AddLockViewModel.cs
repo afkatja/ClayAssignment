@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Clay_Assignment.Models.ManageViewModels
 {
-    public class AddPhoneNumberViewModel
+    public class AddLockViewModel
     {
         [Required]
-        [Phone]
-        [Display(Name = "Phone number")]
-        public string PhoneNumber { get; set; }
+        [Display(Name = "Register door to system")]
+        public string DoorName { get; set; }
     }
 }

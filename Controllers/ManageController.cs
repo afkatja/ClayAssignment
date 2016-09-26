@@ -86,31 +86,25 @@ namespace Clay_Assignment.Controllers
         }
 
         //
-        // GET: /Manage/AddPhoneNumber
-        public IActionResult AddPhoneNumber()
+        // GET: /Manage/AddLock
+        public IActionResult AddLock()
         {
             return View();
         }
 
         //
-        // POST: /Manage/AddPhoneNumber
+        // POST: /Manage/AddLock
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
+        public async Task<IActionResult> AddLock(AddLockViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
             // Generate the token and send it
             var user = await GetCurrentUserAsync();
             if (user == null)
             {
                 return View("Error");
+            } else {
+              return View(model);
             }
-            var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
-            await _smsSender.SendSmsAsync(model.PhoneNumber, "Your security code is: " + code);
-            return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
         }
 
         //

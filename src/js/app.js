@@ -1,9 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { browserHistory, Router, Route, IndexRoute } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import MainNav from './mainnav';
+import Layout from './layout';
 import AuthTabs from './auth-tabs';
-import Footer from './footer';
+import Home from './home';
+import AddLock from './addlock';
+
+const routes = (
+  <Route path='/' component={App}>
+    <IndexRoute component={Home} components={{content: AuthTabs}} />
+    <Route path='Manage/AddLock' components={{content: AddLock}} />
+  </Route>
+);
 
 class App extends React.Component {
   constructor() {
@@ -11,20 +20,14 @@ class App extends React.Component {
   }
   render(){
     return(
-      <div class="container">
-        <MainNav />
-        <div class="body-content">
-          <AuthTabs />
-        </div>
-        <Footer />
-      </div>
+      <MuiThemeProvider>
+        <Layout />
+      </MuiThemeProvider>
     );
   }
 }
 
 ReactDOM.render(
-  <MuiThemeProvider>
-    <App />
-  </MuiThemeProvider>,
+  <Router history={browserHistory} routes={routes} />,
   document.getElementById('app')
 );

@@ -22,8 +22,8 @@ export default class RegisterComponent extends React.Component {
     e.preventDefault();
     const form = document.getElementById('register-form');
     if(this.state.emailValid && this.state.passwordValid) {
-      this.state.loading = true;
-      (() => this.renderOverlay(this.state.loading));
+      this.setState({loading: true});
+      return;
       window.fetch('/Account/Register', {
         method: 'POST',
         body: JSON.stringify({
@@ -31,7 +31,9 @@ export default class RegisterComponent extends React.Component {
           password: form.elements.password.value
         })
       }).then(response => {
-        console.log(response);
+        if(response.status == 200) {
+          location.href = '/Manage/AddLock';
+        }
       });
     }
   }
@@ -77,15 +79,8 @@ export default class RegisterComponent extends React.Component {
         <div class="form-row">
           <RaisedButton label="Register" primary={true} onMouseDown={e => this.handleSubmit(e)} />
         </div>
-        {this.renderOverlay(this.state.loading)}
+        {this.state.loading && <Overlay />}
       </form>
     );
-  }
-  renderOverlay(state){
-    let overlay = React.cloneElement(<Overlay />, {
-      visible: state
-    });
-    console.log('will clone overlay', overlay);
-    return overlay;
   }
 }

@@ -24,7 +24,9 @@ export default class LoginComponent extends React.Component {
         password: form.elements.password.value
       })
     }).then(response => {
-      console.log(response);
+      if(response.status == 200) {
+        location.href = '/Manage/AddLock';
+      }
     })
   }
 

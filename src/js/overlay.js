@@ -7,15 +7,8 @@ var Icon = require('../styles/loading.svg');
     super(props);
   }
   render(){
-    console.log('overlay visible', this.props.visible);
-    const classnames = classNames(
-      'overlay',
-      {
-        'visible': this.props.visible
-      }
-    );
     return (
-      <div className={classnames}>
+      <div className='overlay'>
         <Icon width={40} height={40}/>
       </div>
     );
