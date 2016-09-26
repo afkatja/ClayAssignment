@@ -1,8 +1,6 @@
-@model RegisterViewModel
-@{
-    ViewData["Title"] = "Authorization";
-}
-
+<div id="app">
+  <div class="navbar"></div>
+</div>
 <h2>@ViewData["Title"]: add account</h2>
 
 <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">

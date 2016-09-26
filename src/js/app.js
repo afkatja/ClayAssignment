@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MainNav from './mainnav';
-import LoginComponent from './loginComponent';
+import AuthTabs from './auth-tabs';
 import Footer from './footer';
 
 class App extends React.Component {
@@ -13,7 +13,9 @@ class App extends React.Component {
     return(
       <div class="container">
         <MainNav />
-        <LoginComponent />
+        <div class="body-content">
+          <AuthTabs />
+        </div>
         <Footer />
       </div>
     );
