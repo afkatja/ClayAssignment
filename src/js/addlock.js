@@ -16,10 +16,22 @@ export default class AddLock extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const form = document.getElementById('add-lock-form');
-    console.log('add lock', this.state.doors);
+    const formData = new FormData(form);
+    console.log('add lock', this.state.doors, formData);
+    window.fetch('/Manage/AddLock', {
+      method: 'POST',
+      body: formData
+    }).then(response => {
+      if(response.status == 200){
+        console.log(response);
+        browserHistory.push('doors');
+      }
+    });
   }
   handleChange(e) {
     this.state.doors.push(e.target.value);
+    let output = document.body.querySelector('output');
+    output.value = this.state.doors.join(', ');
   }
   render(){
     return (
@@ -36,7 +48,7 @@ export default class AddLock extends React.Component {
             <RaisedButton type="submit" label="Add doors" primary={true} />
           </div>
         </form>
-        <output for="doorname1, doorname2" form="add-lock-form" name="doors"/>
+        <output for="doorname1 doorname2" form="add-lock-form" name="doors" />
       </Layout>
     );
   }

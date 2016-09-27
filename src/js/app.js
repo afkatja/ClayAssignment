@@ -4,13 +4,17 @@ import { browserHistory, Router, Route, IndexRoute } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Layout from './layout';
 import AuthTabs from './auth-tabs';
-import Home from './home';
 import AddLock from './addlock';
+import Doors from './doors';
+import Door from './door';
 
 const routes = (
   <Route path='/' component={App}>
     <IndexRoute component={AuthTabs} />
     <Route path='addLock' component={AddLock} />
+    <Route path='doors' component={Doors} components={{door: Door}}>
+      <Route path=':doorId' component={Door} />
+    </Route>
   </Route>
 );
 

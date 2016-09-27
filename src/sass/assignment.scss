@@ -31,6 +31,14 @@ body {
   border-bottom: 1px solid #4dd0e1;
   padding: 0 24px;
   text-shadow: 0 1px 0 rgba(0,0,0, .2);
+  ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    li + li {
+      margin-left: 10px;
+    }
+  }
 }
 
 .link-icon {
@@ -45,6 +53,10 @@ body {
     width: 100%;
     margin: 0 auto;
   }
+}
+
+output {
+  margin-top: 20px;
 }
 
 footer {

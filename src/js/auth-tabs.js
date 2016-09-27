@@ -1,14 +1,15 @@
 import React from 'react';
 import Layout from './layout';
+import config from './config';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import LoginComponent from './loginComponent';
 import RegisterComponent from './registerComponent';
 
 const inkStyle = {
-  backgroundColor: '#00acc1'
+  backgroundColor: config.colors.accentColor
 };
 const tabStyle = {
-  backgroundColor: '#80deea'
+  backgroundColor: config.colors.bgColor
 };
 
 export default class AuthTabs extends React.Component {

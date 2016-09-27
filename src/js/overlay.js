@@ -1,5 +1,4 @@
 import React from 'react';
-var classNames = require('classnames');
 var Icon = require('../styles/loading.svg');
 
  export default class Overlay extends React.Component {
