@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Clay_Assignment.Data;
 using Clay_Assignment.Models;
-using Clay_Assignment.Services;
 
 namespace Clay_Assignment
 {
@@ -48,10 +47,6 @@ namespace Clay_Assignment
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
-
-            // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
