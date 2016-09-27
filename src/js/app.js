@@ -9,8 +9,8 @@ import AddLock from './addlock';
 
 const routes = (
   <Route path='/' component={App}>
-    <IndexRoute component={Home} components={{content: AuthTabs}} />
-    <Route path='Manage/AddLock' components={{content: AddLock}} />
+    <IndexRoute component={AuthTabs} />
+    <Route path='addLock' component={AddLock} />
   </Route>
 );
 
@@ -20,9 +20,7 @@ class App extends React.Component {
   }
   render(){
     return(
-      <MuiThemeProvider>
-        <Layout />
-      </MuiThemeProvider>
+      <Layout />
     );
   }
 }

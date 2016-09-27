@@ -1,4 +1,5 @@
 import React from 'react';
+import Layout from './layout';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import LoginComponent from './loginComponent';
 import RegisterComponent from './registerComponent';
@@ -26,18 +27,20 @@ export default class AuthTabs extends React.Component {
 
   render() {
     return (
-      <Tabs
-        value={this.state.value}
-        onChange={this.handleChange}
-        inkBarStyle={inkStyle}
-      >
-        <Tab label="Login" value="Login" style={tabStyle}>
-          <LoginComponent />
-        </Tab>
-        <Tab label="Register" value="Register" style={tabStyle}>
-          <RegisterComponent />
-        </Tab>
-      </Tabs>
+      <Layout>
+        <Tabs
+          value={this.state.value}
+          onChange={this.handleChange}
+          inkBarStyle={inkStyle}
+        >
+          <Tab label="Login" value="Login" style={tabStyle}>
+            <LoginComponent />
+          </Tab>
+          <Tab label="Register" value="Register" style={tabStyle}>
+            <RegisterComponent />
+          </Tab>
+        </Tabs>
+      </Layout>
     );
   }
 }

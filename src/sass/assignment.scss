@@ -1,3 +1,8 @@
+@mixin vertical-center(){
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 html, body, #app {
   height: 100%;
 }
@@ -26,6 +31,12 @@ body {
   border-bottom: 1px solid #4dd0e1;
   padding: 0 24px;
   text-shadow: 0 1px 0 rgba(0,0,0, .2);
+}
+
+.link-icon {
+  position: absolute;
+  @include vertical-center;
+  left: 0;
 }
 
 .auth-form {

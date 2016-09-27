@@ -1,20 +1,23 @@
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MainNav from './mainnav';
 import Footer from './footer';
 
 export default class Layout extends React.Component {
-  content
+  constructor(props) {
+    super(props);
+  }
   render(){
-    const { content } = this.props.children;
-    console.log(this.props.children);
     return(
-      <div class="container">
-        <MainNav />
-        <div class="body-content">
-          {content}
+      <MuiThemeProvider>
+        <div class="container">
+          <MainNav />
+          <div class="body-content">
+            {this.props.children}
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </MuiThemeProvider>
     );
   }
 };

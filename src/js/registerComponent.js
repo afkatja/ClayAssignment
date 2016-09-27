@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Overlay from './overlay';
@@ -23,7 +24,6 @@ export default class RegisterComponent extends React.Component {
     const form = document.getElementById('register-form');
     if(this.state.emailValid && this.state.passwordValid) {
       this.setState({loading: true});
-      return;
       window.fetch('/Account/Register', {
         method: 'POST',
         body: JSON.stringify({
@@ -32,29 +32,39 @@ export default class RegisterComponent extends React.Component {
         })
       }).then(response => {
         if(response.status == 200) {
-          location.href = '/Manage/AddLock';
+          browserHistory.push('addLock');
         }
       });
     }
   }
 
   validate(){
-    if(this.state.email && this.state.email !== '') {
-      this.state.emailValid = true;
-      this.state.errorText = '';
+    if(this.state.email !== '') {
+      this.setState({
+        emailValid: true,
+        errorText: ''
+      });
     } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(this.state.email)) {
-      this.errorText = 'Invalid email address';
-      this.state.emailValid = false;
+      this.setState({
+        errorText: 'Invalid email address',
+        emailValid: false
+      });
     } else {
-      this.state.errorText = 'This field is required';
-      this.state.emailValid = false;
+      this.setState({
+        errorText: 'This field is required',
+        emailValid: false
+      });
     }
     if(this.state.password && this.state.password !== '') {
-      this.state.passwordValid = true;
-      this.state.errorText = '';
+      this.setState({
+        passwordValid: true,
+        errorText: ''
+      });
     } else {
-      this.state.errorText = 'This field is required';
-      this.state.passwordValid = false;
+      this.setState({
+        errorText: 'This field is required',
+        passwordValid: false
+      });
     }
   }
 
@@ -77,7 +87,7 @@ export default class RegisterComponent extends React.Component {
           <TextField type="password" name="repeat-password" floatingLabelText="Repeat your password" fullWidth={true} hintText="Repeat your password" errorText={this.state.errorText} onChange={e => this.handleChange(e, 'password')} onBlur={() => this.validate()} />
         </div>
         <div class="form-row">
-          <RaisedButton label="Register" primary={true} onMouseDown={e => this.handleSubmit(e)} />
+          <RaisedButton type="submit" label="Register" primary={true} onMouseDown={e => this.handleSubmit(e)} />
         </div>
         {this.state.loading && <Overlay />}
       </form>
