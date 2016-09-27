@@ -7,14 +7,16 @@ import AuthTabs from './auth-tabs';
 import AddLock from './addlock';
 import Doors from './doors';
 import Door from './door';
+import NotFound from './notfound';
 
 const routes = (
   <Route path='/' component={App}>
     <IndexRoute component={AuthTabs} />
     <Route path='addLock' component={AddLock} />
-    <Route path='doors' component={Doors} components={{door: Door}}>
-      <Route path=':doorId' component={Door} />
+    <Route path='doors' component={Doors}>
+      <Route path='doors(/:doorId)' component={Door} />
     </Route>
+    <Route path='*' component={NotFound} />
   </Route>
 );
 

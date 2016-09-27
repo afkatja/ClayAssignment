@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 import config from './config';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MaterialIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-right';

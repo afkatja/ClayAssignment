@@ -6,7 +6,7 @@ import React from 'react';
   }
   render(){
     return (
-      <li>Door</li>
+      <li><a href={this.props.params.doorId}>{this.props.title}</a></li>
     );
   }
 };
