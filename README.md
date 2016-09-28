@@ -18,6 +18,8 @@ It also depends on [node](https://nodejs.org/en/) & [npm](https://www.npmjs.com/
 
 The client of the application is written in [Reactjs](https://facebook.github.io/react/) and relies heavily on [Material UI](http://www.material-ui.com/).
 
+The css and DOM features used might not work in some browsers. It's only tested in Chrome latest.
+
 ## Run
 - Check out the repository
 - `cd <project dir>`
