@@ -1,9 +1,11 @@
 import React from 'react';
 import Link from 'react-router';
+import config from './config';
 import Layout from './layout';
 import Overlay from './overlay';
 import AuthDialog from './authDialog';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 import LockOpen from 'material-ui/svg-icons/action/lock-open';
 import LockOutline from 'material-ui/svg-icons/action/lock-outline';
@@ -14,21 +16,27 @@ import LockOutline from 'material-ui/svg-icons/action/lock-outline';
     this.state = {
       doorIsClosed: true,
       userAuthorized: true,
-      loading: false
+      loading: false,
+      showSuccess: false,
+      successMessage: ''
     };
   }
 
   openDoor(){
     this.setState({
       doorIsClosed: false,
-      loading: false
+      loading: false,
+      showSuccess: true,
+      successMessage: 'The Front door is open!'
     });
   }
 
   closeDoor(){
     this.setState({
       doorIsClosed: true,
-      loading: false
+      loading: false,
+      showSuccess: true,
+      successMessage: 'The front door is now closed!'
     });
   }
 
@@ -38,6 +46,12 @@ import LockOutline from 'material-ui/svg-icons/action/lock-outline';
       loading: false
     });
   }
+
+  handleCloseMessage() {
+    this.setState({
+      showSuccess: false,
+    });
+  };
 
   toggleOpen(e){
     e.preventDefault();
@@ -89,6 +103,13 @@ import LockOutline from 'material-ui/svg-icons/action/lock-outline';
         </form>
         {this.state.loading && <Overlay />}
         {this.state.authRequired && <AuthDialog title="Sorry, you are not authorized to open this door" text="Please ask the Front Door Admin to open it for you" open={true} />}
+        <Snackbar
+          open={this.state.showSuccess}
+          message={this.state.successMessage}
+          autoHideDuration={10000}
+          bodyStyle={config.message}
+          style={config.message}
+        />
       </Layout>
     );
   }

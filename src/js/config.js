@@ -37,6 +37,11 @@ export default {
     menuLink: {
       color: '#00acc1',
       textDecoration: 'none'
+    },
+    message: {
+      backgroundColor: '#fff',
+      color: '#444',
+      boxShadow: '-1px -1px 5px rgba(0,0,0, .5)'
     }
   }
 };
