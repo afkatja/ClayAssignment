@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
  export default class Door extends React.Component {
   constructor (props) {
@@ -6,7 +7,7 @@ import React from 'react';
   }
   render(){
     return (
-      <li><a href={this.props.params.doorId}>{this.props.title}</a></li>
+      <li><Link to={this.params.name}>{this.props.title}</Link></li>
     );
   }
 };

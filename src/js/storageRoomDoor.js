@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router';
+import Layout from './layout';
 
  export default class StorageRoomDoor extends React.Component {
   constructor (props) {
@@ -6,7 +8,9 @@ import React from 'react';
   }
   render(){
     return (
-      <li><a href={this.props.params.door}>{this.props.title}</a></li>
+      <Layout>
+        <p>Storage Room Door</p>
+      </Layout>
     );
   }
 };

@@ -7,15 +7,16 @@ import AuthTabs from './auth-tabs';
 import AddLock from './addlock';
 import Doors from './doors';
 import StorageRoomDoor from './storageRoomDoor';
+import FrontDoor from './frontDoor';
 import NotFound from './notfound';
 
 const routes = (
   <Route path='/' component={App}>
     <IndexRoute component={AuthTabs} />
-    <Route path='/addLock' component={AddLock} />
-    <Route path='/doors' component={Doors}>
-      <Route path='/doors/storage-room' component={StorageRoomDoor} />
-    </Route>
+    <Route path='addLock' component={AddLock} />
+    <Route path='doors' component={Doors} />
+    <Route path='front-door' component={FrontDoor} />
+    <Route path='storage-room' component={StorageRoomDoor} />
     <Route path='*' component={NotFound} />
   </Route>
 );
