@@ -1,5 +1,5 @@
 import React from 'react';
-import { browserHistory } from 'react-router'
+import { hashHistory } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
@@ -16,13 +16,19 @@ export default class LoginComponent extends React.Component {
       this.setState({loading: true});
       window.fetch('/Account/Login', {
         method: 'POST',
+        headers: {
+          credentials: 'include'
+        },
         body: JSON.stringify({
           email: form.elements.email.value,
           password: form.elements.password.value
         })
       }).then(response => {
         if(response.status == 200) {
-          browserHistory.push('addLock');
+          localStorage.setItem('userLoggedIn', true);
+          localStorage.setItem('userName', form.elements.email.value);
+
+          hashHistory.push('addLock');
         }
       });
     }

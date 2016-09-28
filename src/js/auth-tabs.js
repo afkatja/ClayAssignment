@@ -18,6 +18,7 @@ export default class AuthTabs extends React.Component {
     this.state = {
       value: 'Login',
     };
+    this.history = this.props.history;
   }
 
   handleChange = (value) => {

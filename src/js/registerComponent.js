@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router'
+import { hashHistory } from 'react-router'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Overlay from './overlay';
@@ -32,7 +32,7 @@ export default class RegisterComponent extends React.Component {
         })
       }).then(response => {
         if(response.status == 200) {
-          browserHistory.push('addLock');
+          hashHistory.push('addLock');
         }
       });
     }

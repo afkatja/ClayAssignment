@@ -15,7 +15,7 @@ import LockOutline from 'material-ui/svg-icons/action/lock-outline';
     super(props);
     this.state = {
       doorIsClosed: true,
-      userAuthorized: false,
+      userAuthorized: localStorage.getItem('userLoggedIn'),
       loading: false,
       showSuccess: false,
       successMessage: ''

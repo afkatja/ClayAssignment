@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hashHistory, browserHistory, Router, Route, IndexRoute } from 'react-router'
+import { hashHistory, browserHistory, Router, Route, IndexRoute } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Layout from './layout';
 import AuthTabs from './auth-tabs';
