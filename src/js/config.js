@@ -5,7 +5,8 @@ export default {
   siteName: 'TheCloudLock',
   colors: {
     bgColor: '#b2ebf2',
-    accentColor: '#00acc1'
+    accentColor: '#00acc1',
+    textColor: 'rgba(0, 0, 0, 0.870588)'  //from Material UI theme
   },
   styles: {
     header: {
@@ -21,7 +22,7 @@ export default {
     titleLink: {
       lineHeight: '60px',
       color: '#fff',
-      textDecoration: 'none',
+      textDecoration: 'none'
     },
     headerLink: {
       lineHeight: '60px',
@@ -29,7 +30,10 @@ export default {
       textDecoration: 'none',
       position: 'relative',
       paddingLeft: '30px',
-      display: 'block'
+      display: 'block',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis'
     },
     iconLink: {
       color: '#fff'

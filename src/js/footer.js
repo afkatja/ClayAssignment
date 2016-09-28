@@ -8,7 +8,7 @@ class Footer extends React.Component {
       <footer>
           <p>{`© 2016 ${config.authorName}`}</p>
           <a href={config.gitHubUrl}>
-            <Icon width={20} height={20} />
+            <Icon width={20} height={20} style={{fill: config.colors.textColor}} />
           </a>
       </footer>
     );

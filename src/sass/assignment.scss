@@ -9,6 +9,7 @@ html, body, #app {
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
+  color: rgba(0, 0, 0, 0.870588); //from Material UI theme
 }
 .container {
   display: flex;
@@ -35,6 +36,7 @@ body {
     list-style: none;
     display: flex;
     margin: 0;
+    padding: 0;
     li + li {
       margin-left: 10px;
     }
