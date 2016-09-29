@@ -21,10 +21,11 @@ The client of the application is written in [Reactjs](https://facebook.github.io
 The css and DOM features used might not work in some browsers. It is only tested in Chrome and Safari (both latest).
 
 ## Demo
-Logged in user
+### Logged in user 
 ![](clay-demo-logged-in.gif)
 
-Not authorized user
+### Not authorized user
+
 ![](clay-demo-unauthorized.gif)
 
 ## Run
@@ -40,3 +41,4 @@ Not authorized user
 - the state of the door is not persistent (after refresh, the state returns to initial)
 - user authorization is not real (should be read from the cookie, but it is read from `localStorage`)
 - added doors are saved also to the `localStorage`
+- the list of events is not implemented
