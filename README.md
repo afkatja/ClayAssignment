@@ -20,8 +20,12 @@ The client of the application is written in [Reactjs](https://facebook.github.io
 
 The css and DOM features used might not work in some browsers. It is only tested in Chrome and Safari (both latest).
 
-#Demo
+## Demo
+Logged in user
+![](clay-demo-logged-in.gif)
 
+Not authorized user
+![](clay-demo-unauthorized.gif)
 
 ## Run
 - Check out the repository
