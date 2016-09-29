@@ -20,8 +20,10 @@ import Subheader from 'material-ui/Subheader';
 
   getDoors(){
     let temp = this.state.doors;
-    temp.push(localStorage.getItem('door1'));
-    temp.push(localStorage.getItem('door2'));
+    if(localStorage.getItem('door1')) {
+      temp.push(localStorage.getItem('door1'));
+      temp.push(localStorage.getItem('door2'));
+    }
     this.setState({
       doors: temp
     });
@@ -29,12 +31,18 @@ import Subheader from 'material-ui/Subheader';
 
   render(){
     let doors = [];
-    this.state.doors.forEach((door, i) => {
-      let doorUrl = door.split(' ').join('-');
-      doors.push(<ListItem key={i} children={
-        <Link key={i} to={doorUrl} style={config.styles.menuLink}>{door}</Link>
+    if(this.state.doors.length) {
+      this.state.doors.forEach((door, i) => {
+        let doorUrl = door.split(' ').join('-');
+        doors.push(<ListItem key={i} children={
+          <Link key={i} to={doorUrl} style={config.styles.menuLink}>{door}</Link>
+        }></ListItem>);
+      });
+    } else {
+      doors.push(<ListItem key={1} children={
+        <Link key={2} to="addLock" style={config.styles.menuLink}>Add doors to the system first</Link>
       }></ListItem>);
-    });
+    }
     return (
       <Layout>
         <Paper zDepth={1}>
