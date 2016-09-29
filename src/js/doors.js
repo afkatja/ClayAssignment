@@ -10,20 +10,37 @@ import Subheader from 'material-ui/Subheader';
 
   constructor (props) {
     super(props);
+    this.state = {
+      doors: []
+    };
+  }
+  componentWillMount(){
+    this.getDoors();
+  }
+
+  getDoors(){
+    let temp = this.state.doors;
+    temp.push(localStorage.getItem('door1'));
+    temp.push(localStorage.getItem('door2'));
+    this.setState({
+      doors: temp
+    });
   }
 
   render(){
+    let doors = [];
+    this.state.doors.forEach((door, i) => {
+      let doorUrl = door.split(' ').join('-');
+      doors.push(<ListItem key={i} children={
+        <Link key={i} to={doorUrl} style={config.styles.menuLink}>{door}</Link>
+      }></ListItem>);
+    });
     return (
       <Layout>
         <Paper zDepth={1}>
           <List>
             <Subheader>List of available doors</Subheader>
-            <ListItem children={
-              <Link key={1} to="front-door" style={config.styles.menuLink}>Front Door</Link>
-            }></ListItem>
-            <ListItem children={
-              <Link key={2} to="storage-room" style={config.styles.menuLink}>Storage Room Door</Link>
-            }></ListItem>
+            {doors}
           </List>
         </Paper>
       </Layout>

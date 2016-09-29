@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { hashHistory } from 'react-router';
 import Layout from './layout';
 import config from './config';
 var Icon = require('../styles/git-icon.svg');
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import AuthDialog from './authDialog';
 
 export default class AddLock extends React.Component {
   constructor() {
@@ -13,26 +15,32 @@ export default class AddLock extends React.Component {
       doors: []
     };
   }
+
   handleSubmit(e){
     e.preventDefault();
     const form = document.getElementById('add-lock-form');
     const formData = new FormData(form);
-    console.log('add lock', this.state.doors, formData);
     window.fetch('/Manage/AddLock', {
       method: 'POST',
-      body: formData
+      headers: {
+        credentials: 'include'
+      },
+      body: JSON.stringify(formData)
     }).then(response => {
       if(response.status == 200){
-        console.log(response);
-        browserHistory.push('doors');
+        localStorage.setItem('door1', form.elements.doorname1.value);
+        localStorage.setItem('door2', form.elements.doorname2.value);
+        hashHistory.push('doors');
       }
     });
   }
+
   handleChange(e) {
     this.state.doors.push(e.target.value);
     let output = document.body.querySelector('output');
     output.value = this.state.doors.join(', ');
   }
+
   render(){
     return (
       <Layout>

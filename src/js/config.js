@@ -42,6 +42,15 @@ export default {
       color: '#00acc1',
       textDecoration: 'none'
     },
+    backLink: {
+      color: '#00acc1',
+      textDecoration: 'none',
+      lineHeight: '24px',
+      display: 'inline-block',
+      textAlign: 'left',
+      verticalAlign: 'top',
+      flex: 'none'
+    },
     message: {
       backgroundColor: '#fff',
       color: '#444',

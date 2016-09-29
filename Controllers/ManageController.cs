@@ -11,23 +11,8 @@ using Clay_Assignment.Models.ManageViewModels;
 
 namespace Clay_Assignment.Controllers
 {
-    [Authorize]
     public class ManageController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger _logger;
-
-        public ManageController(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            ILoggerFactory loggerFactory)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _logger = loggerFactory.CreateLogger<ManageController>();
-        }
-
         //
         // GET: /Manage/Index
         [HttpGet]
