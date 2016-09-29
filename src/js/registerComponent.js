@@ -87,7 +87,7 @@ export default class RegisterComponent extends React.Component {
           <TextField type="password" name="repeat-password" floatingLabelText="Repeat your password" fullWidth={true} hintText="Repeat your password" errorText={this.state.errorText} onChange={e => this.handleChange(e, 'password')} onBlur={() => this.validate()} />
         </div>
         <div class="form-row">
-          <RaisedButton type="submit" label="Register" primary={true} onMouseDown={e => this.handleSubmit(e)} />
+          <RaisedButton type="submit" label="Register" primary={true} />
         </div>
         {this.state.loading && <Overlay />}
       </form>

@@ -2,6 +2,8 @@ import React from 'react';
 import { hashHistory } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import config from './config';
+import Snackbar from 'material-ui/Snackbar';
 
 export default class LoginComponent extends React.Component {
   constructor(){
@@ -12,6 +14,7 @@ export default class LoginComponent extends React.Component {
   handleLogin(e){
     e.preventDefault();
     const form = document.getElementById('login-form');
+    const formData = new FormData(form);
     if(this.state.emailValid && this.state.passwordValid) {
       this.setState({loading: true});
       window.fetch('/Account/Login', {
@@ -19,16 +22,25 @@ export default class LoginComponent extends React.Component {
         headers: {
           credentials: 'include'
         },
-        body: JSON.stringify({
-          email: form.elements.email.value,
-          password: form.elements.password.value
-        })
+        body: JSON.stringify(formData)
       }).then(response => {
         if(response.status == 200) {
+          this.setState({
+            loading: false,
+            showStatus: true,
+            statusMessage: "You are succesfully logged in!"
+          });
+
           localStorage.setItem('userLoggedIn', true);
           localStorage.setItem('userName', form.elements.email.value);
 
           hashHistory.push('addLock');
+        } else {
+          this.setState({
+            loading: false,
+            showStatus: true,
+            statusMessage: "There was a problem logging you in. Maybe try again?"
+          });
         }
       });
     }
@@ -90,8 +102,15 @@ export default class LoginComponent extends React.Component {
           <TextField type="password" name="password" fullWidth={true} floatingLabelText="Your password" hintText="Your password" errorText={this.state.errorText} onChange={e => this.handleChange(e, 'password')} onBlur={() => this.validate()} />
         </div>
         <div class="form-row">
-          <RaisedButton type="submit" label="Login" primary={true} onMouseDown={e => this.handleLogin(e)} />
+          <RaisedButton type="submit" label="Login" primary={true} />
         </div>
+        <Snackbar
+          open={this.state.showStatus || false}
+          message={this.state.statusMessage || ''}
+          autoHideDuration={10000}
+          bodyStyle={config.message}
+          style={config.message}
+        />
       </form>
     );
   }
