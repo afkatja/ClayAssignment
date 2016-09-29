@@ -31,6 +31,5 @@ The css and DOM features used might not work in some browsers. It's only tested 
 
 ## Known bugs
 - the state of the door is not persistent (after refresh, the state returns to initial)
-- user authorization is not real (should be read from the cookie)
-- added doors are not saved anywhere, so shown doors in the list are two hard-coded values
-- each door component is not according to DRY principle, as they should be shown within `Doors` component as `this.props.children`, but I couldn't figure out how to get it done with the `Router`
+- user authorization is not real (should be read from the cookie, but it is read from `localStorage`)
+- added doors are saved also to the `localStorage`
